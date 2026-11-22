@@ -1,0 +1,8 @@
+Q1. How do Issues and pull requests together support change control?
+An Issue records why a change is needed before anyone changes anything, and gives the request a number everyone can refer to, for example issue #1, which asked for a traceability template. The pull request is how the change is proposed: the work happens on its own branch and can be reviewed before it reaches main. Linking them ("Closes #1" in PR #2) creates a trail from request → change → approval. That way every change in main can be traced back to the reason it was made.
+
+Q2. Why did the conflict in Part 4 happen, and how could a team reduce such conflicts?
+The conflict happened because two branches changed the same line of the same file in different ways: one set the deployment setting to staging and the other set it to production. Git couldn't know which one was right, so a person had to decide; we kept "staging first, production after approval". Teams can reduce conflicts by keeping branches small and short-lived and pulling from main often. Agreeing in the Issue who is changing which file also helps.
+
+Q3. What would be lost if people merged straight into main without a pull request?
+There would be no review, so mistakes and conflicting decisions could go straight into the shared code without anyone checking them. The link between the change and its Issue would also be lost, so nobody could easily see why a change was made or who approved it. main would stop being a trusted, controlled baseline, because any change could land at any time. In short, you lose quality checks, traceability and accountability.
